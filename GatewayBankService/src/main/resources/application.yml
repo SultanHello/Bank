@@ -1,0 +1,33 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: UserBankService
+          uri: lb://USERBANKSERVICE
+          predicates:
+            - Path=/users/**
+#          filters:
+#            - AuthenticationFilter
+
+        - id: AuthBankService
+          uri: lb://AUTHBANKSERVICE
+          predicates:
+            - Path=/users/**
+            -
+
+        - id: AuthBankService
+          uri: lb://TRANSACTIONSERVICE
+          predicates:
+            - Path=/users/**
+#          filters:
+#            - AuthenticationFilter
+
+  application:
+    name: GatewayBankService
+server:
+  port: 6273
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:2342/eureka/
+
