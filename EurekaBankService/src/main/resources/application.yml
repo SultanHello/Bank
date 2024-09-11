@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: EurekaBankService
+server:
+  port: 2342
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
